@@ -7,7 +7,7 @@ class RdfDocument
   end
 
   def document
-    @document ||= Nokogiri::XML(open(ARGV[0]))
+    @document ||= Nokogiri::XML(open(@url))
   end
 
   def tag(xpath)
