@@ -10,6 +10,7 @@ end
 
 require "monk/glue"
 require "ohm"
+require "lib/ohm_extensions"
 require "haml"
 require "sass"
 
