@@ -8,6 +8,10 @@ class UaProf < Ohm::Model
   attribute :width
   attribute :height
 
+  # time stamps
+  attribute :created_at
+  attribute :updated_at
+
   index :uri
   index :status
 
@@ -38,9 +42,11 @@ class UaProf < Ohm::Model
     assert_present :uri
 
     # set default status
-    if status.nil?
-      self.status = 'pending'
-    end
+    self.status = 'pending' if status.nil?
+
+    # set created_at and processed_at
+    self.created_at = Time.now.utc if created_at.nil?
+    self.updated_at = Time.now.utc
   end
 
   def self.find_or_create(uri)
