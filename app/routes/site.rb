@@ -1,6 +1,6 @@
 class Main
-  get '/uaprof/*' do
-    uri = params[:splat][0]
+  get '/uaprof' do
+    uri = params[:uri]
 
     begin
       # lets see what we have
