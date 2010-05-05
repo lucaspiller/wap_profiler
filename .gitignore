@@ -6,3 +6,4 @@
 /tmp
 /webrat.log
 /vendor/webrat/vendor
+.DS*
