@@ -31,9 +31,9 @@ class UaProf < Ohm::Model
       # update status and save
       self.status = 'processed'
       save
-    rescue Nokogiri::XML::SyntaxError => e
-      # parse error
-      # TODO: Log it, and pos. ignore it in the future
+    rescue Exception => e
+      self.status = 'failed'
+      save
       false
     end
   end
