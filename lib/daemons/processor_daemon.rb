@@ -3,6 +3,7 @@ require 'init'
 $stdout.sync = true
 
 CHILDREN = 10
+MAX_FAILED_AGE = 3600 * 72
 SIGNALS = %w{ TERM HUP INT }
 
 CHILDREN.times do |n|
@@ -17,8 +18,11 @@ CHILDREN.times do |n|
     end
 
     while @running
+      # process pending uaprofs
       attempted = 0
-      UaProf.find(:status => 'pending').each do |uaprof|
+      UaProf.find(:status => 'pending').sort(:limit => CHILDREN).each do |uaprof|
+        puts "Child ##{n} got #{uaprof.id}"
+
         break if uaprof.mutex_no_wait do
           puts "Child ##{n} got lock on #{uaprof.id}"
 
@@ -33,7 +37,7 @@ CHILDREN.times do |n|
       end
 
       # don't go killing redis
-      sleep 5
+      sleep 1
     end
   end
 end
