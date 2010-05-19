@@ -37,9 +37,9 @@ You will then get a response back near enough instantly. If everything is well y
 
 If the server doesn't yet have details of the UAProf you have sent you will get a HTTP 202 header back. This means it has accepted your request, but hasn't retrived the data yet. After the daemon processes the pending UAProf, when you make the next request you will get a proper response back. If you recieve this response you should assume some sensible defaults.
 
-  HTTP/1.1 202 Accepted
+    HTTP/1.1 202 Accepted
 
-  {"uri":"http://nds1.nds.nokia.com/uaprof/N5800XpressMusicr100-2G.xml","status":"pending","width":null,"height":null,"created_at":"2010-05-05 21:08:33 UTC","updated_at":"2010-05-05 21:08:33 UTC"}
+    {"uri":"http://nds1.nds.nokia.com/uaprof/N5800XpressMusicr100-2G.xml","status":"pending","width":null,"height":null,"created_at":"2010-05-05 21:08:33 UTC","updated_at":"2010-05-05 21:08:33 UTC"}
 
 ## What else?
 
